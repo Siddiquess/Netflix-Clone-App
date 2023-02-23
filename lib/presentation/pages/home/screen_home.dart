@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/core/colors/colors.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
