@@ -7,8 +7,7 @@ import 'widgets/main_page_background.dart';
 import 'widgets/number_title_card.dart';
 
 final ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
-String netflixLog =
-    'https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=684&h=456';
+
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
@@ -61,7 +60,7 @@ class ScreenHome extends StatelessWidget {
                               Row(
                                 children: [
                                   Image.network(
-                                    netflixLog,
+                                    netflixLogo,
                                     width: 50,
                                     height: 50,
                                   ),

@@ -18,7 +18,7 @@ class MainItemCards extends StatelessWidget {
       width: 130,
       height: 180,
       decoration: BoxDecoration(
-        borderRadius: kRadius,
+        borderRadius: kRadius10,
         image: DecorationImage(
           fit: BoxFit.cover,
           image: NetworkImage(imageUrl),
