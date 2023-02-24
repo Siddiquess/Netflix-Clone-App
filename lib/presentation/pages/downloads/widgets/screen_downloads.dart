@@ -18,18 +18,20 @@ class ScreenDownloads extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(50),
-            child: AppBarWidget(
-              title: 'Downloads',
-            )),
-        body: ListView.separated(
-            padding: const EdgeInsets.all(10),
-            itemBuilder: (context, index) => _widgetList[index],
-            separatorBuilder: (context, index) => const SizedBox(
-                  height: 20,
-                ),
-            itemCount: _widgetList.length));
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: AppBarWidget(
+          title: 'Downloads',
+        ),
+      ),
+      body: ListView.separated(
+          padding: const EdgeInsets.all(10),
+          itemBuilder: (context, index) => _widgetList[index],
+          separatorBuilder: (context, index) => const SizedBox(
+                height: 20,
+              ),
+          itemCount: _widgetList.length),
+    );
   }
 }
 
@@ -127,7 +129,9 @@ class Section3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 50,),
+        const SizedBox(
+          height: 50,
+        ),
         SizedBox(
           width: double.infinity,
           child: MaterialButton(

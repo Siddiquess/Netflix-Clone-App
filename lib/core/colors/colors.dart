@@ -5,3 +5,7 @@ const kWhiteColor = Colors.white;
 final kButtonColorBlue = Colors.blueAccent[700];
 const kButtonColorWhite = Colors.white;
 const kBlackColor = Colors.black;
+
+//--------- Text color
+const TextStyle kWhitText = TextStyle(color: Colors.white);
+const TextStyle kBlackText = TextStyle(color: Colors.black);
