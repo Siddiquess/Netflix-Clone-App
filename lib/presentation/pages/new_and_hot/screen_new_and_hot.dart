@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone/core/colors/colors.dart';
+import 'package:netflix_clone/core/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
-import 'package:netflix_clone/presentation/widgets/custom_button_widget.dart';
-import 'package:netflix_clone/presentation/widgets/video_widget.dart';
 
 import 'widgets/coming_soon_widget.dart';
 import 'widgets/everyones_watching_widget.dart';

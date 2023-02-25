@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:netflix_clone/core/colors/colors.dart';
+import 'package:netflix_clone/core/colors.dart';
 
 // --------- Height and width
 const kWidth = SizedBox(width: 10);

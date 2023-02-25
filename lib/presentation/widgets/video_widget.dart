@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/colors/colors.dart';
+import '../../core/colors.dart';
 import '../../core/constants.dart';
 
 class VideoWidget extends StatelessWidget {
