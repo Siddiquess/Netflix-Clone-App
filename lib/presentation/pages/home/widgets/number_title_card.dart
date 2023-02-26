@@ -15,7 +15,7 @@ class NumberTitleCardWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: List.generate(
           10,
-          (index) =>  NumberStackCard(index: index),
+          (index) => NumberStackCard(index: index),
         ),
       ),
     );

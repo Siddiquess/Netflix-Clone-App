@@ -29,7 +29,7 @@ class CustomButtonWidget extends StatelessWidget {
           ),
           Text(
             title,
-            style:  TextStyle(
+            style: TextStyle(
               color: kWhiteColor,
               fontSize: textSize,
             ),

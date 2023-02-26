@@ -47,7 +47,8 @@ class VideoListItems extends StatelessWidget {
                       ),
                     ),
                     kHeight,
-                    CustomButtonWidget(icon: Icons.emoji_emotions, title: 'LOL'),
+                    CustomButtonWidget(
+                        icon: Icons.emoji_emotions, title: 'LOL'),
                     CustomButtonWidget(icon: Icons.add, title: 'My List'),
                     CustomButtonWidget(icon: Icons.share, title: 'Share'),
                     CustomButtonWidget(icon: Icons.play_arrow, title: 'Play'),
@@ -61,5 +62,3 @@ class VideoListItems extends StatelessWidget {
     );
   }
 }
-
-

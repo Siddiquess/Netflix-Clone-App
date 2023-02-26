@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/application/search/search_bloc.dart';
 import 'package:netflix_clone/core/constants.dart';
+import 'package:netflix_clone/core/strings.dart';
 import 'package:netflix_clone/presentation/pages/search/widgets/search_title.dart';
-
-const imageUrl =
-    'https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/uDgy6hyPd82kOHh6I95FLtLnj6p.jpg';
 
 class SearchIdleWidget extends StatelessWidget {
   const SearchIdleWidget({super.key});
@@ -14,24 +14,50 @@ class SearchIdleWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-       const SearchTextTitle(searchTitle: 'Top Searches'),
+        const SearchTextTitle(searchTitle: 'Top Searches'),
         kHeight,
         Expanded(
-          child: ListView.separated(
-              shrinkWrap: true,
-              itemBuilder: (context, index) => const TopSearchesItemTile(),
-              separatorBuilder: (context, index) => kHeight20,
-              itemCount: 10),
+          child: BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              if (state.isLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state.isError) {
+                return const Center(
+                  child: Text('Error Occured'),
+                );
+              } else if (state.idleList.isEmpty) {
+                return const Center(
+                  child: Text('Empty result'),
+                );
+              }
+              return ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final movie = state.idleList[index];
+                    return TopSearchesItemTile(
+                        title: movie.title ?? "No Title Provided",
+                        imageUrl: '$imageAppendUrl${movie.posterPath}');
+                  },
+                  separatorBuilder: (context, index) => kHeight20,
+                  itemCount: state.idleList.length);
+            },
+          ),
         )
       ],
     );
   }
 }
 
-
-
 class TopSearchesItemTile extends StatelessWidget {
-  const TopSearchesItemTile({super.key});
+  const TopSearchesItemTile({
+    super.key,
+    required this.title,
+    required this.imageUrl,
+  });
+  final String title;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +67,17 @@ class TopSearchesItemTile extends StatelessWidget {
         Container(
           width: size.width * 1 / 3,
           height: 60,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover, image: NetworkImage(imageUrl))),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(imageUrl),
+            ),
+          ),
         ),
         kWidth,
         Expanded(
           child: Text(
-            "Movie Name",
+            title,
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.bold,
               fontSize: 16,

@@ -31,14 +31,14 @@ class NumberStackCard extends StatelessWidget {
             child: Text(
               "${index + 1}",
               style: const TextStyle(
-                letterSpacing: -10,
-                color: kBlackColor,
-                fontSize: 120,
-                fontWeight: FontWeight.bold
-                
-                // decoration: TextDecoration.none,
-                // decorationColor: Colors.red,
-              ),
+                  letterSpacing: -10,
+                  color: kBlackColor,
+                  fontSize: 120,
+                  fontWeight: FontWeight.bold
+
+                  // decoration: TextDecoration.none,
+                  // decorationColor: Colors.red,
+                  ),
             ),
           ),
         )

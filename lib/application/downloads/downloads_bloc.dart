@@ -11,13 +11,21 @@ part 'downloads_bloc.freezed.dart';
 part 'downloads_event.dart';
 part 'downloads_state.dart';
 
-
 @injectable
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
   final IDownloadRepo _downloadsRepo;
   DownloadsBloc(this._downloadsRepo) : super(DownloadsState.initial()) {
     on<_GetDownloadsImages>(
       (event, emit) async {
+        if (state.downloads.isNotEmpty) {
+          emit(
+            state.copyWith(
+              isLoading: false,
+              downloadFailureOrSuccessOption: none(),
+            ),
+          );
+          return;
+        }
         emit(
           state.copyWith(
             isLoading: true,

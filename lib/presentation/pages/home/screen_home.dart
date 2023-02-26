@@ -8,7 +8,6 @@ import 'widgets/number_title_card.dart';
 
 final ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
 
-
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
 

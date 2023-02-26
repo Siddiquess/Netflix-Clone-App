@@ -45,7 +45,7 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             const VideoWidget(),
+              const VideoWidget(),
               Row(
                 children: const [
                   Text(
@@ -88,10 +88,7 @@ class ComingSoonWidget extends StatelessWidget {
                 ],
               ),
               kHeight,
-              const Text(
-                "Jurassic world",
-                style: kTextExtraBold
-              ),
+              const Text("Jurassic world", style: kTextExtraBold),
               kHeight,
               const Text(
                 '''Four years after the destruction of Isla Nublar, Biosyn operatives attempt to track down Maisie Lockwood, while Dr Ellie Sattler investigates a genetically engineered swarm of giant insects.''',
@@ -104,4 +101,3 @@ class ComingSoonWidget extends StatelessWidget {
     );
   }
 }
-

@@ -18,7 +18,8 @@ const kMainImage =
     'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7WUHnWGx5OO145IRxPDUkQSh4C7.jpg';
 const newAndHotImage =
     'https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/hT9ZUwLN5tB2O7miBu1oIMJFqJT.jpg';
-const newAndHotImage2 = 'https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg';
+const newAndHotImage2 =
+    'https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg';
 //---------- Text style
 const TextStyle kHomeTitleText = TextStyle(
   fontWeight: FontWeight.bold,

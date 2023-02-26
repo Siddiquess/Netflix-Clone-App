@@ -14,10 +14,10 @@ class DownloadsRepository implements IDownloadRepo {
       final Response response =
           await Dio(BaseOptions()).get(ApiEndPoints.downloads);
       if (response.statusCode == 200 || response.statusCode == 201) {
-      final downloadList=  (response.data['results'] as List)
+        final downloadList = (response.data['results'] as List)
             .map((e) => Downloads.fromJson(e))
             .toList();
-       
+
         return Right(downloadList);
       } else {
         return const Left(MainFailure.serverFailure());
