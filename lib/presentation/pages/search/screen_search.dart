@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/application/search/search_bloc.dart';
 import 'package:netflix_clone/core/constants.dart';
+import 'package:netflix_clone/domain/core/debouncer.dart';
 import 'package:netflix_clone/presentation/pages/search/widgets/search_result.dart';
 
 import 'widgets/search_idle.dart';
 
 class ScreenSearch extends StatelessWidget {
-  const ScreenSearch({super.key});
+  ScreenSearch({super.key});
+
+  final _debouncer = Debouncer(milliseconds:1000);
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +28,15 @@ class ScreenSearch extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CupertinoSearchTextField(
+              onChanged: (value) {
+                if (value.isEmpty) {
+                  return;
+                }
+                _debouncer.run(() {
+                  BlocProvider.of<SearchBloc>(context)
+                      .add(SearchEvent.searchMovie(movieQuery: value));
+                });
+              },
               backgroundColor: Colors.grey.withOpacity(0.4),
               prefixIcon: const Icon(
                 CupertinoIcons.search,
@@ -38,7 +50,15 @@ class ScreenSearch extends StatelessWidget {
             ),
             kHeight,
 
-             const Expanded(child:  SearchIdleWidget()),
+            Expanded(child: BlocBuilder<SearchBloc, SearchState>(
+              builder: (context, state) {
+                if (state.searchResultList.isEmpty) {
+                  return const SearchIdleWidget();
+                } else {
+                  return const SearchResultWidget();
+                }
+              },
+            )),
             // const Expanded(child: SearchResultWidget())
           ],
         ),

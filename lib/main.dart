@@ -5,6 +5,7 @@ import 'package:netflix_clone/application/search/search_bloc.dart';
 import 'package:netflix_clone/core/colors.dart';
 import 'package:netflix_clone/presentation/pages/main_page/widgets/screen_main_page.dart';
 
+import 'application/fast_laugh/fast_laugh_bloc.dart';
 import 'domain/core/dependancy_injector/injectable.dart';
 
 Future<void> main() async {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => getIt<DownloadsBloc>()),
         BlocProvider(create: (context) => getIt<SearchBloc>()),
+        BlocProvider(create: (context) => getIt<FastLaughBloc>()),
       ],
       child: MaterialApp(
         title: 'Netflix App',

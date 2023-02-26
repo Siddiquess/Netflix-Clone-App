@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/application/search/search_bloc.dart';
 import 'package:netflix_clone/core/constants.dart';
 import 'package:netflix_clone/presentation/pages/search/widgets/search_title.dart';
-
-const imageUrl =
-    'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg';
 
 class SearchResultWidget extends StatelessWidget {
   const SearchResultWidget({super.key});
@@ -16,16 +15,23 @@ class SearchResultWidget extends StatelessWidget {
         const SearchTextTitle(searchTitle: 'Movise & TV'),
         kHeight,
         Expanded(
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            childAspectRatio: 1.4 / 2,
-            children: List.generate(
-              20,
-              (index) => const MainCard(),
-            ),
+          child: BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              return GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 3,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 1.4 / 2,
+                children: List.generate(state.searchResultList.length, (index) {
+                  final movie = state.searchResultList[index];
+
+                  return MainCard(
+                    imageUrl: movie.postePathImageUrl,
+                  );
+                }),
+              );
+            },
           ),
         ),
       ],
@@ -34,7 +40,11 @@ class SearchResultWidget extends StatelessWidget {
 }
 
 class MainCard extends StatelessWidget {
-  const MainCard({super.key});
+  const MainCard({
+    super.key,
+    required this.imageUrl,
+  });
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +52,7 @@ class MainCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          image: const DecorationImage(
+          image: DecorationImage(
               fit: BoxFit.cover, image: NetworkImage(imageUrl))),
     );
   }
