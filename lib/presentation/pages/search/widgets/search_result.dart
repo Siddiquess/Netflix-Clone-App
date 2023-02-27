@@ -12,7 +12,7 @@ class SearchResultWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SearchTextTitle(searchTitle: 'Movise & TV'),
+        const SearchTextTitle(searchTitle: 'Movies & TV'),
         kHeight,
         Expanded(
           child: BlocBuilder<SearchBloc, SearchState>(
@@ -51,9 +51,12 @@ class MainCard extends StatelessWidget {
     // final size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          image: DecorationImage(
-              fit: BoxFit.cover, image: NetworkImage(imageUrl))),
+        borderRadius: BorderRadius.circular(5),
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: NetworkImage(imageUrl),
+        ),
+      ),
     );
   }
 }

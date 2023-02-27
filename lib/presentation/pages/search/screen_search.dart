@@ -11,7 +11,7 @@ import 'widgets/search_idle.dart';
 class ScreenSearch extends StatelessWidget {
   ScreenSearch({super.key});
 
-  final _debouncer = Debouncer(milliseconds:1000);
+  final _debouncer = Debouncer(milliseconds: 1000);
 
   @override
   Widget build(BuildContext context) {

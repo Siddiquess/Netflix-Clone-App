@@ -22,7 +22,6 @@ class SearchResponse {
 
 @JsonSerializable()
 class SearchResultData {
-
   @JsonKey(name: 'original_title')
   String? originalTitle;
   @JsonKey(name: 'poster_path')
@@ -31,7 +30,6 @@ class SearchResultData {
   String get postePathImageUrl => '$imageAppendUrl$posterPath';
 
   SearchResultData({
-
     this.originalTitle,
     this.posterPath,
   });

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../core/colors.dart';
-import '../../core/constants.dart';
 
 class VideoWidget extends StatelessWidget {
+  final String posterPath;
   const VideoWidget({
     Key? key,
+    required this.posterPath,
   }) : super(key: key);
 
   @override
@@ -15,8 +16,25 @@ class VideoWidget extends StatelessWidget {
           width: double.infinity,
           height: 160,
           child: Image.network(
-            newAndHotImage,
+            posterPath,
             fit: BoxFit.cover,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) {
+                return child;
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+            errorBuilder: (context, error, stackTrace) {
+              return const Center(
+                child: Text(
+                  "Couldn't load Image"
+                  
+                ),
+              );
+            },
           ),
         ),
         Positioned(

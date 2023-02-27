@@ -7,7 +7,6 @@ import 'package:netflix_clone/domain/search/search_service.dart';
 
 import '../../domain/core/api_end_point.dart';
 
-
 @LazySingleton(as: SearchService)
 class SearchImple implements SearchService {
   @override

@@ -4,15 +4,23 @@ import '../../../widgets/custom_button_widget.dart';
 import '../../../widgets/video_widget.dart';
 
 class EveryOnesWatchingWidget extends StatelessWidget {
+  final String posterPath;
+  final String movieName;
+  final String description;
+
   const EveryOnesWatchingWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        kHeight20,
         Row(
           children: [
             Image.network(
@@ -26,36 +34,49 @@ class EveryOnesWatchingWidget extends StatelessWidget {
             ),
           ],
         ),
-        kHeight,
-        const Text(
-          'Friends',
+        kHeight, 
+        Text(
+          movieName,
           style: kTextExtraBold,
         ),
         kHeight,
-        const Text(
-          '''Six young people from New York City, on their own and struggling to survive in the real world, find the companionship, comfort and support they get from each other to be the perfect antidote to the pressures of life.''',
-        ),
+        Text(description),
         kHeight50,
-        const VideoWidget(),
+        VideoWidget(posterPath: posterPath),
         kHeight20,
         Row(
-          children: const [
-            Text('Movie name'),
-            Spacer(),
-            CustomButtonWidget(
-              icon: Icons.telegram,
-              title: 'Share',
-              iconSize: 35,
-            ),
-            CustomButtonWidget(
-              icon: Icons.add,
-              title: 'My List',
-              iconSize: 35,
-            ),
-            CustomButtonWidget(
-              icon: Icons.play_arrow,
-              title: 'Play',
-              iconSize: 35,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+                child: Text(
+              movieName,
+              maxLines: 2,
+              overflow: TextOverflow.clip,
+              style: const TextStyle(
+                fontSize: 20,
+
+                fontWeight: FontWeight.bold,
+              ),
+            )),
+            Row(
+              children: const [
+                CustomButtonWidget(
+                  icon: Icons.telegram,
+                  title: 'Share',
+                  iconSize: 35,
+                ),
+                CustomButtonWidget(
+                  icon: Icons.add,
+                  title: 'My List',
+                  iconSize: 35,
+                ),
+                CustomButtonWidget(
+                  icon: Icons.play_arrow,
+                  title: 'Play',
+                  iconSize: 35,
+                ),
+              ],
             ),
           ],
         )
