@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/application/search/search_bloc.dart';
 import 'package:netflix_clone/core/constants.dart';
 import 'package:netflix_clone/presentation/pages/search/widgets/search_title.dart';
+
+import '../../../../core/strings.dart';
 
 class SearchResultWidget extends StatelessWidget {
   const SearchResultWidget({super.key});
@@ -48,8 +51,9 @@ class MainCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final nulls = null;
     // final size = MediaQuery.of(context).size;
-    return Container(
+    return imageUrl == '$imageAppendUrl$nulls'? const Center(child:Text("No image"),):Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         image: DecorationImage(

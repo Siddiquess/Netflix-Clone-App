@@ -137,11 +137,10 @@ device''',
                       ),
               );
             } catch (e) {
-              const Center(
-                child: CircularProgressIndicator(),
-              );
+               return kHeight;
+              
             }
-            return kHeight;
+           
           },
         ),
       ],

@@ -5,7 +5,10 @@ import 'number_stack_card.dart';
 class NumberTitleCardWidget extends StatelessWidget {
   const NumberTitleCardWidget({
     Key? key,
+    required this.posterList,
   }) : super(key: key);
+
+  final List<String> posterList;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,10 @@ class NumberTitleCardWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: List.generate(
           10,
-          (index) => NumberStackCard(index: index),
+          (index) => NumberStackCard(
+            index: index,
+            imageUrl: posterList[index],
+          ),
         ),
       ),
     );

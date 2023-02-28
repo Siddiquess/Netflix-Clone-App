@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../core/constants.dart';
 
-String imageUrl =
-    'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg';
 
 class MainItemCards extends StatelessWidget {
+  final String imageUrl;
   const MainItemCards({
-    Key? key,
-  }) : super(key: key);
+   super.key,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
